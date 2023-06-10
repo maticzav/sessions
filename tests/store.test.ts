@@ -12,9 +12,7 @@ const redis: RedisClientType = createClient({
 import { InMemorySessions } from '../src/stores/inmemory'
 import { RedisSessions } from '../src/stores/redis'
 import { ISessions } from '../src/types'
-
 import { SessionUtils } from '../src/utils'
-import { filter } from './utils'
 
 type SessionId = string
 type Meta =
@@ -116,27 +114,15 @@ for (const { label, sessions, cleanup } of STORES) {
     })
 
     test('correctly lists all sessions', async () => {
-      await store.createSession({ userId: 'user-id', label: '#1', meta: {} })
-      await store.createSession({ userId: 'user-id', label: '#2', meta: {} })
-      await store.createSession({ userId: 'user-id', label: '#3', meta: {} })
+      const userId = 'user-id'
+      await store.createSession({ userId, label: '#1', meta: {} })
+      await store.createSession({ userId, label: '#2', meta: {} })
+      await store.createSession({ userId, label: '#3', meta: {} })
 
-      await expect(
-        // We filter out random values and dates.
-        store.listSessions().then((r) => r.map((o) => filter(o, ['label', 'userId']))),
-      ).resolves.toEqual([
-        {
-          label: '#3',
-          userId: 'user-id',
-        },
-        {
-          label: '#2',
-          userId: 'user-id',
-        },
-        {
-          label: '#1',
-          userId: 'user-id',
-        },
-      ])
+      const allSystemSessions = await store.listSessions()
+
+      expect(allSystemSessions.every((s) => s.userId === userId)).toBeTruthy()
+      expect(allSystemSessions.map((s) => s.label)).toEqual(['#3', '#2', '#1'])
     })
 
     test('correclty lists sessions for a given user', async () => {
@@ -150,23 +136,10 @@ for (const { label, sessions, cleanup } of STORES) {
       await store.createSession({ userId: otherUserId, label: '#1', meta: {} })
       await store.createSession({ userId: otherUserId, label: '#2', meta: {} })
 
-      await expect(
-        // We filter out random values and dates.
-        store.getSessionsForUser(userId).then((r) => r.map((o) => filter(o, ['label', 'userId']))),
-      ).resolves.toEqual([
-        {
-          label: '#3',
-          userId: 'user-id',
-        },
-        {
-          label: '#2',
-          userId: 'user-id',
-        },
-        {
-          label: '#1',
-          userId: 'user-id',
-        },
-      ])
+      const allUserIdSessions = await store.getSessionsForUser(userId)
+
+      expect(allUserIdSessions.every((s) => s.userId === userId)).toBeTruthy()
+      expect(allUserIdSessions.map((s) => s.label)).toEqual(['#3', '#2', '#1'])
     })
   })
 }
