@@ -1,5 +1,0 @@
----
-'authsessions': patch
----
-
-improve docs
