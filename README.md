@@ -117,7 +117,3 @@ const allExistingSessions = await sessions.listSessions()
 ### License
 
 MIT @ Matic Zavadlal
-
-```
-
-```
