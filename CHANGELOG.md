@@ -1,5 +1,11 @@
 # authsessions
 
+## 0.0.4
+
+### Patch Changes
+
+- [#5](https://github.com/maticzav/sessions/pull/5) [`88c4dde`](https://github.com/maticzav/sessions/commit/88c4ddecdbae1536b0fbefddb4a7934fbedc3d4a) Thanks [@maticzav](https://github.com/maticzav)! - fix publishing script
+
 ## 0.0.3
 
 ### Patch Changes
