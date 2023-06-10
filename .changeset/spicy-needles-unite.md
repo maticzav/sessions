@@ -1,0 +1,5 @@
+---
+'authsessions': patch
+---
+
+improve docs
