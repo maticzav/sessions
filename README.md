@@ -1,8 +1,25 @@
-# Sessions
+# authsessions
 
-> Sessions contains a set of different session management classes.
+> authsessions contains a set of different framework-agnostic session management classes.
 
 Each sessions variant implements a general `ISessions` interface and may be swapped in as a replacement for any existing sessions provider.
+
+- `InMemorySessions`
+- `RedisSessions`
+
+> All sessions are easily replacable! All of them work the same, and only have different persistance settings.
+
+You can learn more about Protocol Oriented Programming in [this great WWDC talk](https://developer.apple.com/videos/play/wwdc2015/408/).
+
+#### Installing
+
+```sh
+npm i authsessions
+
+pnpm i authsessions
+
+yarn add authsessions
+```
 
 ## Quick Start
 
@@ -48,6 +65,8 @@ By creating a context, you let the routes in your GraphQL or REST server access 
 ```ts
 export type Context = {
   session: SessionId | null
+
+  // NOTE: We use a generic interface. This way, we can replace the implementation depending on our needs.
   sessions: ISessions<string, SessionMeta>
 }
 
@@ -98,7 +117,3 @@ const allExistingSessions = await sessions.listSessions()
 ### License
 
 MIT @ Matic Zavadlal
-
-```
-
-```
