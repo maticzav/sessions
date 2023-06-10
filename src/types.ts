@@ -53,7 +53,7 @@ export interface ISessions<UserId, Meta = {}> {
   destroySession(session: SessionId): Promise<void>
 
   /**
-   * Lists all sessions in the system.
+   * Lists all sessions in the system starting with the least recently accessed one.
    */
   listSessions(): Promise<Session<UserId, Meta>[]>
 }

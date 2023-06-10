@@ -23,6 +23,18 @@ jobs:
         with:
           version: 8.1.0
 
+      - name: Build Redis
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./docker/redis/Dockerfile
+          load: true
+          tags: my-redis:latest
+
+      - name: Run Redis
+        run: |
+          docker run -d --name redis -p 6379:6379 --env REDIS_PASSWORD=redis my-redis:latest
+
       - name: Setup Node Environment
         uses: actions/setup-node@v3
         with:
@@ -34,6 +46,11 @@ jobs:
 
       - name: Build Packages
         run: pnpm run build
+
+      - name: Wait for Redis
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '30s'
 
       - name: Test Packages and Template
         run: pnpm run test

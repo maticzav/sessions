@@ -137,7 +137,7 @@ export class RedisSessions<UserId extends string = string, Meta = {}> implements
       })
     }
 
-    return sessions
+    return sessions.sort((a, b) => b.lastUsedAt.toMillis() - a.lastUsedAt.toMillis())
   }
 
   /**

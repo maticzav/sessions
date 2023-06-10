@@ -73,11 +73,12 @@ export class InMemorySessions<UserId = string, Meta = {}> implements ISessions<U
       }
     })
 
-    return sessions
+    return sessions.sort((a, b) => (a.lastUsedAt < b.lastUsedAt ? 1 : -1))
   }
 
   public async listSessions(): Promise<Session<UserId, Meta>[]> {
-    return Array.from(this.sessions.values())
+    // NOTE: The last accessed session needs to be at the top of the list.
+    return Array.from(this.sessions.values()).sort((a, b) => (a.lastUsedAt < b.lastUsedAt ? 1 : -1))
   }
 
   private getSessionId(): SessionId {

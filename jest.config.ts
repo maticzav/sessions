@@ -6,7 +6,7 @@ const config: Config = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
-  testRegex: '(/tests/.*|(\\.|/)test)\\.tsx?$',
+  testRegex: '/tests/.*\\.test\\.tsx?$',
   testPathIgnorePatterns: ['/node_modules/', '/__fixtures__/', '/dist/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 }
