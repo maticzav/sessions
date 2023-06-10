@@ -1,6 +1,12 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  '@types/luxon':
+    specifier: ^3.2.0
+    version: 3.2.0
+  '@types/uuid':
+    specifier: ^9.0.1
+    version: 9.0.1
   luxon:
     specifier: ^3.2.1
     version: 3.2.1
@@ -21,15 +27,9 @@ devDependencies:
   '@types/jest':
     specifier: 28.1.8
     version: 28.1.8
-  '@types/luxon':
-    specifier: ^3.2.0
-    version: 3.2.0
   '@types/node':
     specifier: 18.11.9
     version: 18.11.9
-  '@types/uuid':
-    specifier: ^9.0.1
-    version: 9.0.1
   jest:
     specifier: 29.3.1
     version: 29.3.1(@types/node@18.11.9)(ts-node@10.9.1)
@@ -1102,7 +1102,7 @@ packages:
 
   /@types/luxon@3.2.0:
     resolution: {integrity: sha512-lGmaGFoaXHuOLXFvuju2bfvZRqxAqkHPx9Y9IQdQABrinJJshJwfNCKV+u7rR3kJbiqfTF/NhOkcxxAFrObyaA==}
-    dev: true
+    dev: false
 
   /@types/minimist@1.2.2:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
@@ -1142,7 +1142,7 @@ packages:
 
   /@types/uuid@9.0.1:
     resolution: {integrity: sha512-rFT3ak0/2trgvp4yYZo5iKFEPsET7vKydKF+VRCxlQ9bpheehyAJH89dAkaLEq/j/RZXJIqcgsmPJKUP1Z28HA==}
-    dev: true
+    dev: false
 
   /@types/yargs-parser@21.0.0:
     resolution: {integrity: sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==}
