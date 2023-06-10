@@ -44,13 +44,13 @@ jobs:
       - name: Install Workspace Dependencies
         run: pnpm i --frozen-lockfile
 
-      - name: Build Packages
-        run: pnpm run build
-
       - name: Wait for Redis
         uses: jakejarvis/wait-action@master
         with:
           time: '30s'
 
-      - name: Test Packages and Template
-        run: pnpm run test
+      - name: Test Package Types
+        run: pnpm run test:types
+
+      - name: Test Package Unit Tests
+        run: pnpm run test:lib
