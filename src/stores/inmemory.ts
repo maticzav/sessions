@@ -1,7 +1,7 @@
 import * as crypto from 'crypto'
 import { DateTime } from 'luxon'
 
-import { Session, SessionId, ISessions } from './types'
+import { Session, SessionId, ISessions } from '../types'
 
 /**
  * Utility class that manages user sessions in memory.

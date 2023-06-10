@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+
+  redis:
+    build:
+      context: .
+      dockerfile: ./docker/redis/Dockerfile
+    restart: always
+    ports:
+      - "6379:6379"
+    environment:
+      REDIS_PASSWORD: redis
+    volumes:
+      - redis:/data
+
+volumes:
+  postgres:
+  redis:

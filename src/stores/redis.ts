@@ -2,7 +2,7 @@ import * as crypto from 'crypto'
 import { DateTime } from 'luxon'
 import { RedisClientType } from 'redis'
 
-import { Session, SessionId, ISessions } from './types'
+import { Session, SessionId, ISessions } from '../types'
 
 /**
  * Key containing all active session identifiers.

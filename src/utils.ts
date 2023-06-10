@@ -19,7 +19,7 @@ export namespace SessionUtils {
    * Returns the HTTP Authorization header that should be used to associate a given session.
    */
   export function getAuthTokenForSessionId(sessionId: SessionId): string {
-    return sessionId as string
+    return `Bearer ${sessionId}`
   }
 
   /**
